@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle = "Мой блог об изучении Astro";
 ---
 
 <body>
@@ -11,19 +12,13 @@ import Layout from "../layouts/Layout.astro";
   <a href="/about/">О сайте</a>
   <a href="/blog/">Блог</a>
 
-  <h1>Мой сайт на Astro</h1>
-  <h1>Мой блог</h1>
-  <h2>о моем новом сайте на Astro!</h2>
-
-  <p>
-    Я прохожу вводный учебник по Astro. Это вторая страница моего сайта, и это
-    первая страница, которую я создал самостоятельно!
-  </p>
-
-  <p>
-    Сайт будет обновляться по мере прохождения учебника, так что заходите сюда
-    снова и следите за моим прогрессом!
-  </p>
+  <h1>{pageTitle}</h1>
+  <p>Здесь я буду публиковать записи о своем пути изучения Astro.</p>
+  <ul>
+    <li><a href="/posts/post-1/">Пост 1</a></li>
+    <li><a href="/posts/post-2/">Пост 2</a></li>
+    <li><a href="/posts/post-3/">Пост 3</a></li>
+  </ul>
 </body>
 <!-- <Layout>
 	<Welcome/>
