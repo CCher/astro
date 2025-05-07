@@ -1,25 +1,19 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+const allPosts = Object.values(
+  import.meta.glob("../pages/posts/*.md", { eager: true })
+);
 const pageTitle = "Мой блог об изучении Astro";
 ---
 
-<body>
-  <a href="/">Главная</a>
-  <a href="/about/">О сайте</a>
-  <a href="/blog/">Блог</a>
-
-  <h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
   <p>Здесь я буду публиковать записи о своем пути изучения Astro.</p>
   <ul>
-    <li><a href="/posts/post-1/">Пост 1</a></li>
-    <li><a href="/posts/post-2/">Пост 2</a></li>
-    <li><a href="/posts/post-3/">Пост 3</a></li>
+    {
+      allPosts.map((post: any) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
   </ul>
-</body>
-<!-- <Layout>
-	<Welcome/>
-</Layout> -->
+</BaseLayout>

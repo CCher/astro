@@ -1,7 +1,8 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Моя первая запись в блоге'
 pubDate: 2022-07-01
-description: 'Это первый пост моего нового Astro блога.'
+description: 'Это мой первый пост в моем новом блоге Astro.'
 author: 'Ученик Astro'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
@@ -10,9 +11,7 @@ tags: ["astro", "ведение блога", "обучение в открыто
 ---
 [back](../blog/)
 
-
-
-# Моя первая запись в блоге
+<!-- # Моя первая запись в блоге -->
 
 Опубликовано: 01.07.2022
 

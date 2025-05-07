@@ -1,11 +1,6 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-
-const pageTitle = "Обо мне";
+import BaseLayout from "../layouts/BaseLayout.astro";
+// const { pageTitle } = Astro.props;
 
 const identity = {
   firstName: "Сара",
@@ -26,54 +21,55 @@ const skills = [
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
-<html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <a href="/">Главная</a>
-    <a href="/about/">О сайте</a>
-    <a href="/blog/">Блог</a>
+<BaseLayout pageTitle="Обо мне">
+  <h2>... и моем новом сайте на Astro!</h2>
 
-    <h1>{pageTitle}</h1>
-    <h2>... и моем новом сайте на Astro!</h2>
-
-    <p>Несколько фактов обо мне:</p>
-    <ul>
-      <li>Меня зовут {identity.firstName}.</li>
-      <li>
-        Моя страна — {identity.country}, а род занятий — {identity.occupation}.
-      </li>
-      {
-        identity.hobbies.length >= 2 && (
-          <li>
-            Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
-          </li>
-        )
-      }
-    </ul>
-    <p>Мои навыки:</p>
-    <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
-    </ul>
-
-    {happy && <p>Я рад(а) изучать Astro!</p>}
-
-    {finished && <p>Я завершил(а) это руководство!</p>}
-
+  <p>Несколько фактов обо мне:</p>
+  <ul>
+    <li>Меня зовут {identity.firstName}.</li>
+    <li>
+      Моя страна — {identity.country}, а род занятий — {identity.occupation}.
+    </li>
     {
-      goal === 3 ? (
-        <p>Моя цель — завершить за 3 дня.</p>
-      ) : (
-        <p>Моя цель — не 3 дня.</p>
+      identity.hobbies.length >= 2 && (
+        <li>
+          Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
+        </li>
       )
     }
-  </body>
-  <!-- <Layout>
-	<Welcome/>
-</Layout> -->
-</html>
+  </ul>
+  <p>Мои навыки:</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+
+  {happy && <p>Я рад(а) изучать Astro!</p>}
+
+  {finished && <p>Я завершил(а) это руководство!</p>}
+
+  {
+    goal === 3 ? (
+      <p>Моя цель — завершить за 3 дня.</p>
+    ) : (
+      <p>Моя цель — не 3 дня.</p>
+    )
+  }
+</BaseLayout>
+
+<style is:global define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
